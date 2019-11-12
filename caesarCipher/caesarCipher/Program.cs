@@ -10,13 +10,13 @@ namespace caesarCipher
     {
         static void Main(string[] args)
         {
-            string message = encrpyt("Cheese Please!", 15);
+            string message = encrpyt("Cheese Please!", 15, 23);
             Console.WriteLine(message);
-            Console.WriteLine(Decrypt(message, 15));
+            Console.WriteLine(Decrypt(message, 15, 23));
             Console.ReadKey();
         }
 
-        static string encrpyt(string plaintext, int shiftKey)
+        static string encrpyt(string plaintext, int key1, int key2)
         {
             string cipherText = "";
             for (int i = 0; i < plaintext.Length; i++)
@@ -25,7 +25,7 @@ namespace caesarCipher
                 if (char.IsUpper(plaintext[i]))
                 {
                     ASCII = ASCII - 65;
-                    ASCII = ASCII + shiftKey;
+                    ASCII = ASCII + shiftKey(i);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
@@ -33,7 +33,7 @@ namespace caesarCipher
                 else if (char.IsLower(plaintext[i]))
                 {
                     ASCII = ASCII - 97;
-                    ASCII = ASCII + shiftKey;
+                    ASCII = ASCII + shiftKey(i);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 97;
@@ -44,7 +44,7 @@ namespace caesarCipher
             return cipherText;
         }
 
-        static string Decrypt(string cipherText, int shiftKey)
+        static string Decrypt(string cipherText, int key1, int key2)
         {
             string plaintext = "";
             for (int i = 0; i < cipherText.Length; i++)
@@ -53,7 +53,7 @@ namespace caesarCipher
                 if (char.IsUpper(cipherText[i]))
                 {
                     ASCII = ASCII - 65;
-                    ASCII = ASCII - shiftKey;
+                    ASCII = ASCII - shiftKey(i);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
@@ -61,7 +61,7 @@ namespace caesarCipher
                 else if (char.IsLower(cipherText[i]))
                 {
                     ASCII = ASCII - 97;
-                    ASCII = ASCII - shiftKey;
+                    ASCII = ASCII - shiftKey(i);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 97;
@@ -70,6 +70,22 @@ namespace caesarCipher
                 plaintext = plaintext + (char)ASCII;
             }
             return plaintext;
+        }
+
+        static int shiftKey(int i)
+        {
+            int asciiCode = 0;
+            int key1 = 0;
+            int key2 = 0;
+            if (i % 2 == 0)
+            {
+                asciiCode = asciiCode + key1;
+            }
+            else
+            {
+                asciiCode = asciiCode + key2;
+            }
+            return asciiCode;
         }
     }
 }
