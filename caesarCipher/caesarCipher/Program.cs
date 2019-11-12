@@ -10,7 +10,7 @@ namespace caesarCipher
     {
         static void Main(string[] args)
         {
-            string message = encrpyt("Cheese please!", 15);
+            string message = encrpyt("Cheese Please!", 15);
             Console.WriteLine(message);
             Console.WriteLine(Decrypt(message, 15));
             Console.ReadKey();
@@ -26,6 +26,7 @@ namespace caesarCipher
                 {
                     ASCII = ASCII - 65;
                     ASCII = ASCII + shiftKey;
+                    ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
                 }
@@ -53,6 +54,7 @@ namespace caesarCipher
                 {
                     ASCII = ASCII - 65;
                     ASCII = ASCII - shiftKey;
+                    ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
                 }
