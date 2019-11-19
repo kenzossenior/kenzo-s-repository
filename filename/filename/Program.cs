@@ -15,12 +15,11 @@ namespace writingToAFile
             string filename = @"names.txt";
             string[] teams = new string[16];
 
-            getNames(teams);
-
             Console.WriteLine("Would you like to read or write the file?");
             string readOrWrite = Console.ReadLine();
             if (readOrWrite == "write")
             {
+                getNames(teams);
                 writeTeams(teams, filename);
             }
             if (readOrWrite == "read")
@@ -32,7 +31,7 @@ namespace writingToAFile
 
         static void getNames(string[] teams)
         {
-            for (int i = 0; i <= 15; i++)
+            for (int i = 0; i < teams.Length; i++)
             {
                 Console.WriteLine("Enter Team Name {0}" , i + 1 );
                 teams[i] = Console.ReadLine();
@@ -43,7 +42,7 @@ namespace writingToAFile
         {
             using (StreamWriter CurrentFile = new StreamWriter(filename))
             {
-                for (int i = 0; i <= 15; i++)
+                for (int i = 0; i < teams.Length; i++)
                 {
                     CurrentFile.WriteLine("Team {i}:" , teams[i]);
                 }
@@ -53,9 +52,9 @@ namespace writingToAFile
         {
             using (StreamReader CurrentFile = new StreamReader(filename))
             {
-                for (int i = 0; i <= 15; i++)
+                for (int i = 0; i < teams.Length; i++)
                 {
-                    CurrentFile.ReadLine("Team {i}:", teams[i]);
+                    Console.WriteLine(CurrentFile.ReadLine());
                 }
             }
         }
