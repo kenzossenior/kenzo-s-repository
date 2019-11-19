@@ -13,19 +13,49 @@ namespace writingToAFile
         static void Main(string[] args)
         {
             string filename = @"names.txt";
-            string[] names = new string[16];
+            string[] teams = new string[16];
 
-            for (int i = 1; i <= 15; i++)
+            getNames(teams);
+
+            Console.WriteLine("Would you like to read or write the file?");
+            string readOrWrite = Console.ReadLine();
+            if (readOrWrite == "write")
             {
-                Console.WriteLine("ENter a name");
-                names[i] = Console.ReadLine();
+                writeTeams(teams, filename);
             }
+            if (readOrWrite == "read")
+            {
+                readNames(filename, teams);
+            }
+            Console.ReadKey();
+        }
 
+        static void getNames(string[] teams)
+        {
+            for (int i = 0; i <= 15; i++)
+            {
+                Console.WriteLine("Enter Team Name {0}" , i + 1 );
+                teams[i] = Console.ReadLine();
+            }
+        }
+
+        static void writeTeams(string[] teams, string filename)
+        {
             using (StreamWriter CurrentFile = new StreamWriter(filename))
             {
                 for (int i = 0; i <= 15; i++)
                 {
-                    CurrentFile.WriteLine(names[i]);
+                    CurrentFile.WriteLine("Team {i}:" , teams[i]);
+                }
+            }
+        }
+        static void readNames(string filename, string[] teams)
+        {
+            using (StreamReader CurrentFile = new StreamReader(filename))
+            {
+                for (int i = 0; i <= 15; i++)
+                {
+                    CurrentFile.ReadLine("Team {i}:", teams[i]);
                 }
             }
         }
