@@ -12,13 +12,20 @@ namespace writingToAFile
     {
         static void Main(string[] args)
         {
-            string filename = @"lines.txt";
+            string filename = @"names.txt";
+            string[] names = new string[16];
+
+            for (int i = 1; i <= 15; i++)
+            {
+                Console.WriteLine("ENter a name");
+                names[i] = Console.ReadLine();
+            }
 
             using (StreamWriter CurrentFile = new StreamWriter(filename))
             {
-                for (int i = 0; i == 9; i++)
+                for (int i = 0; i <= 15; i++)
                 {
-                    CurrentFile.WriteLine(i);
+                    CurrentFile.WriteLine(names[i]);
                 }
             }
         }
