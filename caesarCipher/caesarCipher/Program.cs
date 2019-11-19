@@ -25,7 +25,7 @@ namespace caesarCipher
                 if (char.IsUpper(plaintext[i]))
                 {
                     ASCII = ASCII - 65;
-                    ASCII = ASCII + shiftKey(i);
+                    ASCII = ASCII + shiftKey(i, key1, key2, ASCII);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
@@ -33,7 +33,7 @@ namespace caesarCipher
                 else if (char.IsLower(plaintext[i]))
                 {
                     ASCII = ASCII - 97;
-                    ASCII = ASCII + shiftKey(i);
+                    ASCII = ASCII + shiftKey(i, key1, key2, ASCII);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 97;
@@ -53,7 +53,7 @@ namespace caesarCipher
                 if (char.IsUpper(cipherText[i]))
                 {
                     ASCII = ASCII - 65;
-                    ASCII = ASCII - shiftKey(i);
+                    ASCII = ASCII - shiftKey(i, key1, key2, ASCII);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 65;
@@ -61,7 +61,7 @@ namespace caesarCipher
                 else if (char.IsLower(cipherText[i]))
                 {
                     ASCII = ASCII - 97;
-                    ASCII = ASCII - shiftKey(i);
+                    ASCII = ASCII - shiftKey(i, key1, key2, ASCII);
                     ASCII = ASCII + 26;
                     ASCII = ASCII % 26;
                     ASCII = ASCII + 97;
@@ -72,20 +72,18 @@ namespace caesarCipher
             return plaintext;
         }
 
-        static int shiftKey(int i)
+        static int shiftKey(int key1, int key2, int i, int ASCII)
         {
-            int asciiCode = 0;
-            int key1 = 0;
-            int key2 = 0;
+            int key;
             if (i % 2 == 0)
             {
-                asciiCode = asciiCode + key1;
+                key = key1;
             }
             else
             {
-                asciiCode = asciiCode + key2;
+                key = key2;
             }
-            return asciiCode;
+            return key;
         }
     }
 }
