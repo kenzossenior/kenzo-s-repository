@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2015
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CheckDigit", "CheckDigit\CheckDigit.csproj", "{5C7D5619-DFD0-41B5-BAC5-C06B13ADA49B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C7D5619-DFD0-41B5-BAC5-C06B13ADA49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C7D5619-DFD0-41B5-BAC5-C06B13ADA49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C7D5619-DFD0-41B5-BAC5-C06B13ADA49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C7D5619-DFD0-41B5-BAC5-C06B13ADA49B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {7FFB083B-AD94-4471-A499-63580037845E}
+	EndGlobalSection
+EndGlobal
