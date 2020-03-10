@@ -19,7 +19,7 @@ namespace OOP_Ex2
             this.make = make;
             this.model = model;
             this.mileage = mileage;
-            this.colour = colour;
+            this.colour = colour;a
             this.age = age;
         }
         public DisplayDetails()
