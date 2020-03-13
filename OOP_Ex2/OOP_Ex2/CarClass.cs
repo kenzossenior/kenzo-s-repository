@@ -14,17 +14,19 @@ namespace OOP_Ex2
         private string colour;
         private int age;
 
-        public Car(string make, string model, int mileage,string colour, int age)
+        public CarClass(string make, string model, int mileage,string colour, int age)
         {
             this.make = make;
             this.model = model;
             this.mileage = mileage;
-            this.colour = colour;a
+            this.colour = colour;
             this.age = age;
         }
-        public DisplayDetails()
+        public string DisplayDetails(CarClass auto)
         {
+            Console.WriteLine($"{make}, {model}, {mileage}, {colour} {age} ");
 
+            return auto.make;
         }
 
         public ChangeMileage()
