@@ -6,22 +6,20 @@ using System.Threading.Tasks;
 
 namespace OOPDraw
 {
-    public class Rectangle
+    class EqualateralTriangle
     {
         //Properties
         public float XOrigin { get; private set; }
         public float YOrigin { get; private set; }
-        public float Width { get; private set; }
-        public float Height { get; private set; }
+        public float SideLength { get; private set; }
+
 
         //The 'Constructor'
-
-        public Rectangle(float xOrigin, float yOrigin, float width, float height)
+        public EqualateralTriangle(float xOrigin, float yOrigin, float sideLength)
         {
             XOrigin = xOrigin;
             YOrigin = yOrigin;
-            Width = width;
-            Height = height;
+            SideLength = sideLength;
         }
     }
 }

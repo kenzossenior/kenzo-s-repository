@@ -26,43 +26,45 @@ namespace OOPDraw
             string SelectedItem = (string)comboBox1.SelectedItem;
             if (SelectedItem == "Draw Triangle")
             {
-                DrawTriangle(turtleX, turtleY, 50);
+                var tri = new EqualateralTriangle(turtleX, turtleY, 50);
+                DrawTriangle(tri);
             }
             else if (SelectedItem == "Draw Rectangle")
             {
-                DrawRectangle(turtleX, turtleY, 50, 100);
+                var rec = new Rectangle(turtleX, turtleY, 100, 50);
+                DrawRectangle(rec);
             }
         }
-        private static void DrawTriangle(float xOrigin, float yOrigin, float sideLength)
+        private static void DrawTriangle(EqualateralTriangle tri)
         {
             Turtle.ShowTurtle = false;
             Turtle.PenSize = 2;
             Turtle.Angle = 0;
-            Turtle.X = xOrigin;
-            Turtle.Y = yOrigin;
+            Turtle.X = tri.XOrigin;
+            Turtle.Y = tri.YOrigin;
             Turtle.Rotate(30);
 
             for (int i = 0; i < 3; i++)
             {
-                Turtle.Forward(sideLength);
+                Turtle.Forward(tri.SideLength);
                 Turtle.Rotate(120);
             }
         }
 
-        private static void DrawRectangle(float xOrigin, float yOrigin, float height, float width)
+        private static void DrawRectangle(Rectangle rec)
         {
             Turtle.ShowTurtle = false;
             Turtle.PenSize = 2;
             Turtle.Angle = 0;
-            Turtle.X = xOrigin;
-            Turtle.Y = yOrigin;
+            Turtle.X = rec.XOrigin;
+            Turtle.Y = rec.YOrigin;
             Turtle.Rotate(0);
 
             for (int i = 0; i < 2; i++)
             {
-                Turtle.Forward(width);
+                Turtle.Forward(rec.Width);
                 Turtle.Rotate(90);
-                Turtle.Forward(height);
+                Turtle.Forward(rec.Height);
                 Turtle.Rotate(90);
             }
         }
