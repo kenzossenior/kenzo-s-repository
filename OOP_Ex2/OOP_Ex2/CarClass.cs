@@ -29,9 +29,6 @@ namespace OOP_Ex2
             return auto.make;
         }
 
-        public ChangeMileage()
-        {
 
-        }
     }
 }

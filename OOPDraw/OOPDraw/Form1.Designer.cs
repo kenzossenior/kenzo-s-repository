@@ -36,7 +36,8 @@
             this.comboBox1.FormattingEnabled = true;
             this.comboBox1.Items.AddRange(new object[] {
             "Draw Triangle",
-            "Draw Rectangle"});
+            "Draw Rectangle",
+            "Move Shape"});
             this.comboBox1.Location = new System.Drawing.Point(68, 101);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(121, 21);
@@ -50,6 +51,7 @@
             this.Controls.Add(this.comboBox1);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.Form1_MouseClick);
             this.ResumeLayout(false);
 

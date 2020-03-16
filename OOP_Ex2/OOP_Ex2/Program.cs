@@ -16,6 +16,7 @@ namespace OOP_Ex2
 
             Console.WriteLine();
 
+            Console.ReadKey();
         }
     }
 }    
