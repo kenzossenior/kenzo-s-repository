@@ -14,7 +14,7 @@ namespace OOP_Ex2
         private string colour;
         private int age;
 
-        public CarClass(string make, string model, int mileage,string colour, int age)
+        public CarClass(string make, string model, int mileage, string colour, int age)
         {
             this.make = make;
             this.model = model;
@@ -22,11 +22,31 @@ namespace OOP_Ex2
             this.colour = colour;
             this.age = age;
         }
-        public string DisplayDetails(CarClass auto)
+        public void DisplayDetails()
         {
-            Console.WriteLine($"{make}, {model}, {mileage}, {colour} {age} ");
+            Console.WriteLine($"{this.make}, {this.model}, {this.mileage}, {this.colour} {this.age} ");
+        }
 
-            return auto.make;
+        public void ChangeMileage()
+        {
+
+            Console.WriteLine("Do you want to change mileage for this vehicle? (Yes or No)");
+            string input = Console.ReadLine();
+            while(input != "Yes" && input != "No")
+            {
+                Console.WriteLine("Invalid entry, re enter");
+                input = Console.ReadLine();
+            }
+            if (input == "Yes")
+            {
+                Console.WriteLine("input Mileage");
+                int.TryParse(Console.ReadLine(), out this.mileage);
+                while(this.mileage < 0 || this.mileage > 1000000)
+                {
+                    Console.WriteLine("Invalid entry, input Mileage");
+                    int.TryParse(Console.ReadLine(), out this.mileage);
+                }
+            }
         }
 
 
