@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Nakov.TurtleGraphics;
+using System.Collections;
 
 namespace OOPDraw
 {
@@ -18,6 +19,9 @@ namespace OOPDraw
             InitializeComponent();
         }
 
+        private List<Shape> shapes = new List<Shape>();
+
+        private Shape mostRecent;
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -27,46 +31,35 @@ namespace OOPDraw
             if (SelectedItem == "Draw Triangle")
             {
                 var tri = new EqualateralTriangle(turtleX, turtleY, 50);
-                DrawTriangle(tri);
+                shapes.Add(tri);
+                mostRecent = tri;
             }
             else if (SelectedItem == "Draw Rectangle")
             {
                 var rec = new Rectangle(turtleX, turtleY, 100, 50);
-                DrawRectangle(rec);
+                shapes.Add(rec);
+                mostRecent = rec;
             }
-        }
-        private static void DrawTriangle(EqualateralTriangle tri)
-        {
-            Turtle.ShowTurtle = false;
-            Turtle.PenSize = 2;
-            Turtle.Angle = 0;
-            Turtle.X = tri.XOrigin;
-            Turtle.Y = tri.YOrigin;
-            Turtle.Rotate(30);
-
-            for (int i = 0; i < 3; i++)
+            else if (SelectedItem == "Move Shape")
             {
-                Turtle.Forward(tri.SideLength);
-                Turtle.Rotate(120);
+                mostRecent.MoveTo(turtleX, turtleY);
             }
+            DrawAll();
         }
 
-        private static void DrawRectangle(Rectangle rec)
+        public void DrawAll()
         {
-            Turtle.ShowTurtle = false;
-            Turtle.PenSize = 2;
-            Turtle.Angle = 0;
-            Turtle.X = rec.XOrigin;
-            Turtle.Y = rec.YOrigin;
-            Turtle.Rotate(0);
-
-            for (int i = 0; i < 2; i++)
+            Turtle.Dispose(); //first clea all turtle tracks to start afresh
+            foreach (var shape in shapes)
             {
-                Turtle.Forward(rec.Width);
-                Turtle.Rotate(90);
-                Turtle.Forward(rec.Height);
-                Turtle.Rotate(90);
+                shape.Draw();
+
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
