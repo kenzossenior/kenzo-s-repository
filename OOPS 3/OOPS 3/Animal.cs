@@ -81,7 +81,7 @@ namespace OOPS_3
         {
             Console.WriteLine("What is the name of your dog?");
             this.name = Console.ReadLine();
-            return this.name;
+            return this.namce;
         }
     }
 }
