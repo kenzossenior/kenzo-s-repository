@@ -23,7 +23,7 @@ namespace OOPS_3
 
         public Animal()
         {
-            NameAnimal();
+            //NameAnimal();
             SetGender();
         }
 
@@ -70,7 +70,7 @@ namespace OOPS_3
             return "woof";
         }
 
-        override public void NameAnimal()
+        new public void NameAnimal()
         {
             Console.WriteLine("What is the name of your dog?");
             this.Name = Console.ReadLine();
@@ -92,7 +92,7 @@ namespace OOPS_3
             return "meow";
         }
 
-        override public void NameAnimal()
+        new public void NameAnimal()
         {
             Console.WriteLine("What is the name of your cat?");
             this.Name = Console.ReadLine();

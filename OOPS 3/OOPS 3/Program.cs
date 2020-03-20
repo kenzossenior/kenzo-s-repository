@@ -20,7 +20,7 @@ namespace OOPS_3
             Dog pet2 = new Dog("Jim");
             Cat pet3 = new Cat();
 
-            //pet1.NameAnimal();
+            pet1.NameAnimal();
             Console.WriteLine(pet1.Name);
             Console.WriteLine(pet1.makeNoise());
             Console.WriteLine(pet1.Gender);
@@ -31,7 +31,7 @@ namespace OOPS_3
             Console.WriteLine(pet2.Gender);
             Console.WriteLine();
 
-            //pet3.NameAnimal();
+            pet3.NameAnimal();
             Console.WriteLine(pet3.Name);
             Console.WriteLine(pet3.makeNoise());
             Console.WriteLine(pet3.Gender);
