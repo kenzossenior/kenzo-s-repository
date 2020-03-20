@@ -12,15 +12,15 @@ namespace OOPS_3
         {
             OG();
             Console.ReadKey();
-
         }
 
         public static void OG()
         {
-            Animal pet1 = new Animal("Tim");
+            Animal pet1 = new Animal();
             Dog pet2 = new Dog("Jim");
-            Cat pet3 = new Cat("Nib");
+            Cat pet3 = new Cat();
 
+            //pet1.NameAnimal();
             Console.WriteLine(pet1.Name);
             Console.WriteLine(pet1.makeNoise());
             Console.WriteLine(pet1.Gender);
@@ -31,6 +31,7 @@ namespace OOPS_3
             Console.WriteLine(pet2.Gender);
             Console.WriteLine();
 
+            //pet3.NameAnimal();
             Console.WriteLine(pet3.Name);
             Console.WriteLine(pet3.makeNoise());
             Console.WriteLine(pet3.Gender);

@@ -12,8 +12,8 @@ namespace OOPS_3
         private string name;
         private string gender;
 
-        public string Name { get { return this.name; } }
-        public string Gender { get { return this.gender; } }
+        public string Name { get { return this.name;  } set { this.name = value; } }
+        public string Gender { get { return this.gender; } set { } }
 
         public Animal(string name)
         {
@@ -23,12 +23,19 @@ namespace OOPS_3
 
         public Animal()
         {
+            NameAnimal();
             SetGender();
         }
 
         public void NameAnimal(string name)
         {
             this.name = name;
+        }
+
+         virtual public void NameAnimal()
+        {
+            Console.WriteLine("What is the name of your animal?");
+            this.Name = Console.ReadLine();
         }
 
         virtual public string makeNoise()
@@ -62,6 +69,12 @@ namespace OOPS_3
         {
             return "woof";
         }
+
+        override public void NameAnimal()
+        {
+            Console.WriteLine("What is the name of your dog?");
+            this.Name = Console.ReadLine();
+        }
     }
 
     class Cat : Animal
@@ -69,6 +82,7 @@ namespace OOPS_3
         public Cat()
             : base()
         { }
+        
 
         public Cat(string name)
            : base(name)
@@ -77,11 +91,11 @@ namespace OOPS_3
         {
             return "meow";
         }
-        public string nameAnimal()
+
+        override public void NameAnimal()
         {
-            Console.WriteLine("What is the name of your dog?");
-            this.name = Console.ReadLine();
-            return this.namce;
+            Console.WriteLine("What is the name of your cat?");
+            this.Name = Console.ReadLine();
         }
     }
 }
