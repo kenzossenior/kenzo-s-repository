@@ -3,13 +3,37 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Nakov.TurtleGraphics;
 
 namespace OOPDraw
 {
-    interface Shape
+    public abstract class Shape
     {
-        void Draw();
+        //properties
+        protected float XOrigin { get; set; }
+        protected float YOrigin { get; set; }
+        //Abstract mthods
+        public Shape(float xOrigin, float yOrigin)
+        {
+            XOrigin = xOrigin;
+            YOrigin = yOrigin;
+        }
 
-        void MoveTo(float x, float y);
+        public abstract void Draw();
+
+        public void MoveTo(float x, float y)
+        {
+            XOrigin = x;
+            YOrigin = y;
+        }
+
+        protected void ResetTurtle()
+        {
+            Turtle.ShowTurtle = false;
+            Turtle.PenSize = 2;
+            Turtle.Angle = 0;
+            Turtle.X = XOrigin;
+            Turtle.Y = YOrigin;
+        }
     }
 }

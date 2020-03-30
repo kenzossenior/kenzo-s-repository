@@ -10,38 +10,25 @@ namespace OOPDraw
     class EqualateralTriangle : Shape
     {
         //Properties
-        private float XOrigin { get;  set; }
-        private float YOrigin { get;  set; }
-        private float SideLength { get;  set; }
+        private float SideLength { get; set; }
 
 
         //The 'Constructor'
         public EqualateralTriangle(float xOrigin, float yOrigin, float sideLength)
+            : base(xOrigin, yOrigin)
         {
-            XOrigin = xOrigin;
-            YOrigin = yOrigin;
             SideLength = sideLength;
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            Turtle.ShowTurtle = false;
-            Turtle.PenSize = 2;
-            Turtle.Angle = 0;
-            Turtle.X = XOrigin;
-            Turtle.Y = YOrigin;
+            ResetTurtle();
             Turtle.Rotate(30);
-
             for (int i = 0; i < 3; i++)
             {
                 Turtle.Forward(SideLength);
                 Turtle.Rotate(120);
             }
-        }
-        public void MoveTo(float x, float y)
-        {
-            XOrigin = x;
-            YOrigin = y;
         }
     }
 }

@@ -10,29 +10,21 @@ namespace OOPDraw
     public class Rectangle : Shape
     {
         //Properties
-        private float XOrigin { get; set; }
-        private float YOrigin { get; set; }
         private float Width { get; set; }
         private float Height { get; set; }
 
         //The 'Constructor'
 
         public Rectangle(float xOrigin, float yOrigin, float width, float height)
+            :base(xOrigin, yOrigin)
         {
-            XOrigin = xOrigin;
-            YOrigin = yOrigin;
             Width = width;
             Height = height;
         }
 
-        public void Draw()
+        public override void Draw()
         {
-            Turtle.ShowTurtle = false;
-            Turtle.PenSize = 2;
-            Turtle.Angle = 0;
-            Turtle.X = XOrigin;
-            Turtle.Y = YOrigin;
-
+            ResetTurtle();
             for (int i = 0; i < 2; i++)
             {
                 Turtle.Forward(Width);
@@ -40,12 +32,6 @@ namespace OOPDraw
                 Turtle.Forward(Height);
                 Turtle.Rotate(90);
             }
-        }
-
-        public void MoveTo(float x, float y)
-        {
-            XOrigin = x;
-            YOrigin = y;
         }
     }
 
