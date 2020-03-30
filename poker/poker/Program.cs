@@ -14,7 +14,7 @@ namespace poker
 
         class PlayingCard
         {
-            public string Suit;
+            public string Suit;l
             public int Value;
             public int Points;
 
