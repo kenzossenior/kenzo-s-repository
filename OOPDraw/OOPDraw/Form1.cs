@@ -51,7 +51,7 @@ namespace OOPDraw
             Turtle.Dispose(); //first clea all turtle tracks to start afresh
             foreach (var shape in shapes)
             {
-                shape.Draw();e
+                shape.Draw();
             }
         }
 
