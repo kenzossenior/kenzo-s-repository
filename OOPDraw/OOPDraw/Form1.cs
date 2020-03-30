@@ -26,7 +26,7 @@ namespace OOPDraw
 
             float turtleX = e.X - Width / 2 + 8;
             float turtleY = Height / 2 - e.Y - 19;
-            string SelectedItem = (string)comboBox1.SelectedItem; TEST again
+            string SelectedItem = (string)comboBox1.SelectedItem; TEST again 2
             if (SelectedItem == "Draw Triangle")
             {
                 var tri = new EqualateralTriangle(turtleX, turtleY, 50);
