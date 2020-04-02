@@ -26,24 +26,31 @@ namespace OOPDraw
 
             float turtleX = e.X - Width / 2 + 8;
             float turtleY = Height / 2 - e.Y - 19;
-            string SelectedItem = (string)comboBox1.SelectedItem; TEST again 2 3
+            string SelectedItem = (string)comboBox1.SelectedItem;
             if (SelectedItem == "Draw Triangle")
             {
-                var tri = new EqualateralTriangle(turtleX, turtleY, 50);
-                shapes.Add(tri);
-                activeShapeNumber = shapes.Count - 1;
+                AddShape(new EqualateralTriangle(turtleX, turtleY, 50));
             }
             else if (SelectedItem == "Draw Rectangle")
             {
-                var rec = new Rectangle(turtleX, turtleY, 100, 50);
-                shapes.Add(rec);
-                activeShapeNumber = shapes.Count - 1;
+                AddShape(new Rectangle(turtleX, turtleY, 100, 50));                
             }
             else if (SelectedItem == "Move Shape")
             {
                 ActiveShape().MoveTo(turtleX, turtleY);
             }
             DrawAll();
+        }
+
+        private void AddShape(Shape Shape)
+        {
+            if (shapes.Count > 0) // i.e. this isn't the first shape
+            {
+                ActiveShape().Unselect();
+            }
+            shapes.Add(Shape);
+            activeShapeNumber = shapes.Count - 1;
+            ActiveShape().Select();
         }
 
         public void DrawAll()
@@ -55,11 +62,6 @@ namespace OOPDraw
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private int activeShapeNumber = 0;
 
         private Shape ActiveShape()
@@ -69,14 +71,24 @@ namespace OOPDraw
 
         private void Next_Click(object sender, EventArgs e)
         {
+            ActiveShape().Unselect();
             activeShapeNumber = activeShapeNumber + 1;
             if (activeShapeNumber >= shapes.Count) activeShapeNumber = 0;
+            ActiveShape().Select();
+            DrawAll();
         }
         private void Prev_Click(object sender, EventArgs e)
         {
+            ActiveShape().Unselect();
             activeShapeNumber = activeShapeNumber - 1;
             if (activeShapeNumber < 0) activeShapeNumber = shapes.Count - 1;
+            ActiveShape().Select();
+            DrawAll();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
-
