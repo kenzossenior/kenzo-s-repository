@@ -39,6 +39,10 @@ namespace OOPDraw
             {
                 ActiveShape().MoveTo(turtleX, turtleY);
             }
+            else if (SelectedItem == "Resize Shape")
+            {
+                ActiveShape().ResizeAbsolute(turtleX, turtleY);
+            }
             DrawAll();
         }
 

@@ -16,7 +16,7 @@ namespace OOPDraw
         //The 'Constructor'
 
         public Rectangle(float xOrigin, float yOrigin, float width, float height)
-            :base(xOrigin, yOrigin)
+            : base(xOrigin, yOrigin)
         {
             Width = width;
             Height = height;
@@ -33,6 +33,12 @@ namespace OOPDraw
                 Turtle.Rotate(90);
             }
         }
+        public override void Resize(float x, float y)
+        {
+            Width = x;
+            Height = y;
+        }
     }
+    
 
 }

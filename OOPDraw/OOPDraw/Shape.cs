@@ -22,6 +22,12 @@ namespace OOPDraw
         //Abstract mthods
         public abstract void Draw();
 
+        public void ResizeAbsolute(float turtleX, float turtleY)
+        {
+            Resize(Math.Abs(turtleX - XOrigin), Math.Abs(turtleY - YOrigin));
+        }
+        public abstract void Resize(float x, float y);
+
         //concrete methods
         public void MoveTo(float x, float y)
         {
