@@ -24,7 +24,7 @@ namespace Lockdown_L1
 
             for (int i = 0; i < 52; i++)
             {
-                cards.Add(new Card(values[i % 12], suits[i / 13]));
+                cards.Add(new Card(values[i % 4], suits[i / 13]));
             }
         }
         //Methods
