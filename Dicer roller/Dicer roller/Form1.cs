@@ -18,23 +18,24 @@ namespace Dicer_roller
         }
 
         Shaker myShaker = new Shaker();
+        BoardDrawer board = new BoardDrawer();
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+            pbx_board.Image = board.DrawBoard();
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Die3.Text = "Die3";
             myShaker.RollDice();
-            Die1.Text = myShaker.Die1.Face.ToString();
-            Die2.Text = myShaker.Die2.Face.ToString();
-            if (myShaker.isADouble())
+            if(myShaker.isADouble())
             {
-                Die3.Text = myShaker.Die3.Face.ToString();
+                pbx_board.Image = board.DrawBoard(myShaker.Die1.Face, myShaker.Die2.Face, myShaker.Die3.Face);
             }
-            diceCount.Text = myShaker.Total.ToString();
+            else
+            {
+                pbx_board.Image = board.DrawBoard(myShaker.Die1.Face, myShaker.Die2.Face);
+            }
         }
     }
 }

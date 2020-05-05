@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Dicer_roller.Properties {
+namespace L3_spaceInvader.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace Dicer_roller.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Dicer_roller.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("L3_spaceInvader.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -63,9 +63,9 @@ namespace Dicer_roller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap die1 {
+        internal static System.Drawing.Bitmap invader1 {
             get {
-                object obj = ResourceManager.GetObject("die1", resourceCulture);
+                object obj = ResourceManager.GetObject("invader1", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,9 @@ namespace Dicer_roller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap die2 {
+        internal static System.Drawing.Bitmap invader2 {
             get {
-                object obj = ResourceManager.GetObject("die2", resourceCulture);
+                object obj = ResourceManager.GetObject("invader2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,49 +83,9 @@ namespace Dicer_roller.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap die3 {
+        internal static System.Drawing.Bitmap space {
             get {
-                object obj = ResourceManager.GetObject("die3", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap die4 {
-            get {
-                object obj = ResourceManager.GetObject("die4", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap die5 {
-            get {
-                object obj = ResourceManager.GetObject("die5", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap die6 {
-            get {
-                object obj = ResourceManager.GetObject("die6", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap felt {
-            get {
-                object obj = ResourceManager.GetObject("felt", resourceCulture);
+                object obj = ResourceManager.GetObject("space", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
