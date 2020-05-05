@@ -41,9 +41,11 @@ namespace L3_spaceInvader
 
         public Bitmap DrawPic(bool show)
         {
+
             using (Graphics g = Graphics.FromImage(finalPic))
             {
-                if(show )
+                g.DrawImage(space, 0, 0, finalPic.Width, finalPic.Height);
+                if (show )
                 {
                     g.DrawImage(invader1, 50, 50, 50, 50);
                 }
@@ -56,7 +58,6 @@ namespace L3_spaceInvader
         {
             using (Graphics g = Graphics.FromImage(finalPic))
             {
-
                 g.DrawImage(space, 0, 0, finalPic.Width, finalPic.Height);
                 if (position == 1)
                 {
