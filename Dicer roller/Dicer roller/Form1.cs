@@ -26,6 +26,7 @@ namespace Dicer_roller
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            Die3.Text = "Die3";
             myShaker.RollDice();
             Die1.Text = myShaker.Die1.Face.ToString();
             Die2.Text = myShaker.Die2.Face.ToString();
