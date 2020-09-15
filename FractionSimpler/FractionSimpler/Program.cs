@@ -14,7 +14,7 @@ namespace FractionSimpler
             int.TryParse(Console.ReadLine(), out int top);
             Console.WriteLine("Enter denominator of fraction");
             int.TryParse(Console.ReadLine(), out int Bottom);
-
+            //TEST
             bool check = false;
             int hcf = 1;
             int biggestNum;
