@@ -21,7 +21,6 @@ namespace OOPDraw
 
         private List<Shape> shapes = new List<Shape>();
 
-        private Shape mostRecent;
         private void Form1_MouseClick(object sender, MouseEventArgs e)
         {
 
@@ -30,21 +29,32 @@ namespace OOPDraw
             string SelectedItem = (string)comboBox1.SelectedItem;
             if (SelectedItem == "Draw Triangle")
             {
-                var tri = new EqualateralTriangle(turtleX, turtleY, 50);
-                shapes.Add(tri);
-                mostRecent = tri;
+                AddShape(new EqualateralTriangle(turtleX, turtleY, 50));
             }
             else if (SelectedItem == "Draw Rectangle")
             {
-                var rec = new Rectangle(turtleX, turtleY, 100, 50);
-                shapes.Add(rec);
-                mostRecent = rec;
+                AddShape(new Rectangle(turtleX, turtleY, 100, 50));                
             }
             else if (SelectedItem == "Move Shape")
             {
-                mostRecent.MoveTo(turtleX, turtleY);
+                ActiveShape().MoveTo(turtleX, turtleY);
+            }
+            else if (SelectedItem == "Resize Shape")
+            {
+                ActiveShape().ResizeAbsolute(turtleX, turtleY);
             }
             DrawAll();
+        }
+
+        private void AddShape(Shape Shape)
+        {
+            if (shapes.Count > 0) // i.e. this isn't the first shape
+            {
+                ActiveShape().Unselect();
+            }
+            shapes.Add(Shape);
+            activeShapeNumber = shapes.Count - 1;
+            ActiveShape().Select();
         }
 
         public void DrawAll()
@@ -53,8 +63,31 @@ namespace OOPDraw
             foreach (var shape in shapes)
             {
                 shape.Draw();
-
             }
+        }
+
+        private int activeShapeNumber = 0;
+
+        private Shape ActiveShape()
+        {
+            return shapes[activeShapeNumber]; //List elements can be accessed like an array
+        }
+
+        private void Next_Click(object sender, EventArgs e)
+        {
+            ActiveShape().Unselect();
+            activeShapeNumber = activeShapeNumber + 1;
+            if (activeShapeNumber >= shapes.Count) activeShapeNumber = 0;
+            ActiveShape().Select();
+            DrawAll();
+        }
+        private void Prev_Click(object sender, EventArgs e)
+        {
+            ActiveShape().Unselect();
+            activeShapeNumber = activeShapeNumber - 1;
+            if (activeShapeNumber < 0) activeShapeNumber = shapes.Count - 1;
+            ActiveShape().Select();
+            DrawAll();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -63,4 +96,3 @@ namespace OOPDraw
         }
     }
 }
-
