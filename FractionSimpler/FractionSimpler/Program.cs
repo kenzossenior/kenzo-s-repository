@@ -17,8 +17,15 @@ namespace FractionSimpler
 
             bool check = false;
             int hcf = 1;
+            int biggestNum;
 
-            for (int i = top; i > 0; i--)
+            if(top < Bottom)
+            {
+                biggestNum = top;
+            }
+            else { biggestNum = Bottom;}
+
+            for (int i = biggestNum; i > 0; i--)
             {
                 if (check == false && Bottom % i == 0 && top % i == 0)
                 {
