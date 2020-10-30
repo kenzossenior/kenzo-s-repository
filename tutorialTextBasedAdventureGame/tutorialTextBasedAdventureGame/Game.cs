@@ -54,7 +54,7 @@ namespace tutorialTextBasedAdventureGame
             string input = "";
             Console.WriteLine("Choice: A or B");
             input = Console.ReadLine();
-            input.ToUpper();
+            input = input.ToUpper();
             if (input == "A")
             {
                 Console.WriteLine("You chose A");
