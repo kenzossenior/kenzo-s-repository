@@ -10,7 +10,7 @@ namespace BubbleSort
     {
         static void Main(string[] args)
         {
-            int[] elephants = new int[20];
+            int[] elephants = new int[5];
 
             int temp;
 
@@ -75,7 +75,7 @@ namespace BubbleSort
                     count++;
                 }
             }
-            while (swap == true || count != elephants.Length - 1);
+            while (swap == true ); //|| count != elephants.Length - 1
 
 
             Console.WriteLine();

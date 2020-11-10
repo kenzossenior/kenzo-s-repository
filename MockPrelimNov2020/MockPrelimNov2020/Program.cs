@@ -16,6 +16,7 @@ namespace TextAdventuresCS
         const int Inventory = 1001;
         const int MinimumIDForItem = 2001;
         const int IDDifferenceForObjectInTwoLocations = 10000;
+        const int maxInventory = 4;
         static Random Rnd = new Random();
 
         class Place
@@ -550,10 +551,20 @@ namespace TextAdventuresCS
 
         private static void GetItem(List<Item> items, string itemToGet, int currentLocation, ref bool stopGame)
         {
+            int ItemsInInventory = 0;            
             string resultForCommand, subCommand = "", subCommandParameter = "";
             int indexOfItem, position;
             bool canGet = false;
             indexOfItem = GetIndexOfItem(itemToGet, -1, items);
+
+            for (int i = 0; i < items.Count; i++)
+            {
+                if (items[i].Location == Inventory)
+                {
+                    ItemsInInventory++;
+                }
+            }
+
             if (indexOfItem == -1)
             {
                 Console.WriteLine("You can't find " + itemToGet + ".");
@@ -573,6 +584,10 @@ namespace TextAdventuresCS
             else if (items[indexOfItem].Location < MinimumIDForItem && items[indexOfItem].Location != currentLocation)
             {
                 Console.WriteLine("You can't find " + itemToGet + ".");
+            }
+            else if (ItemsInInventory >= maxInventory)
+            {
+                Console.WriteLine("Inventory full");
             }
             else
             {
@@ -596,7 +611,6 @@ namespace TextAdventuresCS
                 if (items[indexOfItem].Status.Contains("gettable"))
                 {
                     ChangeLocationOfItem(items, indexOfItem, Inventory);
-
                     Console.WriteLine("You have got that now.");
                 }
             }
@@ -636,38 +650,49 @@ namespace TextAdventuresCS
 
         private static void TakeItemFromOtherCharacter(List<Item> items, int idOfOtherCharacter)
         {
+            int ItemsInInventory = 0;
             List<int> ListofIndicesOfItemsInInventory = new List<int>();
             List<string> ListOfNamesOfItemsInInventory = new List<string>();
             int Count = 0;
-            while (Count < items.Count)
+
+            for (int i = 0; i < items.Count; i++)
             {
-                if (items[Count].Location == idOfOtherCharacter)
+                if (items[i].Location == Inventory)
+                    ItemsInInventory++;
+            }
+            if (ItemsInInventory < maxInventory)
+            {
+                while (Count < items.Count)
                 {
-                    ListofIndicesOfItemsInInventory.Add(Count);
-                    ListOfNamesOfItemsInInventory.Add(items[Count].Name);
+                    if (items[Count].Location == idOfOtherCharacter)
+                    {
+                        ListofIndicesOfItemsInInventory.Add(Count);
+                        ListOfNamesOfItemsInInventory.Add(items[Count].Name);
+                    }
+                    Count++;
                 }
-                Count++;
+                Count = 1;
+                Console.Write("Which item do you want to take?  They have: ");
+                Console.Write(ListOfNamesOfItemsInInventory[0]);
+                while (Count < ListOfNamesOfItemsInInventory.Count - 1)
+                {
+                    Console.Write(", " + ListOfNamesOfItemsInInventory[Count]);
+                    Count++;
+                }
+                Console.WriteLine(".");
+                string ChosenItem = Console.ReadLine();
+                if (ListOfNamesOfItemsInInventory.Contains(ChosenItem))
+                {
+                    Console.WriteLine("You have that now.");
+                    int pos = ListOfNamesOfItemsInInventory.IndexOf(ChosenItem);
+                    ChangeLocationOfItem(items, Convert.ToInt32(ListofIndicesOfItemsInInventory[pos]), Inventory);
+                }
+                else
+                {
+                    Console.WriteLine("They don't have that item, so you don't take anything this time.");
+                }
             }
-            Count = 1;
-            Console.Write("Which item do you want to take?  They have: ");
-            Console.Write(ListOfNamesOfItemsInInventory[0]);
-            while (Count < ListOfNamesOfItemsInInventory.Count - 1)
-            {
-                Console.Write(", " + ListOfNamesOfItemsInInventory[Count]);
-                Count++;
-            }
-            Console.WriteLine(".");
-            string ChosenItem = Console.ReadLine();
-            if (ListOfNamesOfItemsInInventory.Contains(ChosenItem))
-            {
-                Console.WriteLine("You have that now.");
-                int pos = ListOfNamesOfItemsInInventory.IndexOf(ChosenItem);
-                ChangeLocationOfItem(items, Convert.ToInt32(ListofIndicesOfItemsInInventory[pos]), Inventory);
-            }
-            else
-            {
-                Console.WriteLine("They don't have that item, so you don't take anything this time.");
-            }
+            else{ Console.WriteLine("inventory full"); }
         }
 
         private static void TakeRandomItemFromPlayer(List<Item> items, int otherCharacterID)
